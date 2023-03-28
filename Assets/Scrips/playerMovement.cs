@@ -11,8 +11,10 @@ public class playerMovement : MonoBehaviour
     private SpriteRenderer sprite;
     public Rigidbody2D rb2d;
     public Animator anim;
-    private enum MovementStage {idle,Running,Jumping, Falling};
+    private enum MovementStage {idle,Running,Jumping, Falling, Double_Jump};
     public LayerMask jumpableGround;
+    private bool IsGrounded;
+    private int jumpCount;
    
    
     
@@ -25,27 +27,37 @@ public class playerMovement : MonoBehaviour
          anim = GetComponent<Animator>();
      }
 
-    // Update is called once per frame
+   
     void Update() 
     {
-        // transform.rotation = Quaternion.identity;
-
-        // float moveThang =  Input.GetAxis("Horizontal");
-         moveNgang =  Input.GetAxis("Vertical");
-        // transform.Position = Vector2(moveThang*Speed, );
+    // di chuyen ngang
+         moveNgang =  Input.GetAxis("Horizontal");
          rb2d.velocity = new Vector2 ( Speed* moveNgang,rb2d.velocity.y);
          
-        // Try out this delta time method??
-        // rb2d.transform.position += new Vector3(Speed * Time.deltaTime, 0.0f, 0.0f);
-         if (Input.GetButtonDown("Jump")&& IsGrounded()){
-            // rb2d.AddForce(Vector2.up*jump, ForceMode2D.Impulse);
-            rb2d.velocity= new Vector2(0,jump);
-        // UpdateRoi();
-       
+    // nhay 2 lan
+        // IsGrounded = Physics2D.BoxCast(coll.bounds.center,coll.bounds.size, 0f,Vector2.down, .1f, jumpableGround );
+        //   if (IsGrounded)
+        // {
+        //     jumpCount = 0;
+        // }
+
+        if (Input.GetButtonDown("Jump") && jumpCount < 2 )
+        {
+            rb2d.velocity = new Vector2(rb2d.velocity.x, jump);
+            jumpCount++;
+        }
+    // update animation
+        UpdateAnimationUpdate();
     }
-     UpdateAnimationUpdate();
-   
+  
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+        {
+            jumpCount = 0;
+        }
     }
+    //Animation
     void UpdateAnimationUpdate(){
         MovementStage stage;
         if(moveNgang>0f){
@@ -57,17 +69,20 @@ public class playerMovement : MonoBehaviour
         } else {
             stage = MovementStage.idle;
         }
-
-        if(rb2d.velocity.y > .1f){
+        if(Input.GetKeyDown(KeyCode.Space)){
             stage = MovementStage.Jumping;
-        } else if(rb2d.velocity.y< -.1f){
+        } else if(rb2d.velocity.y< -1f){
             stage = MovementStage.Falling;
+        }
+        if(jumpCount==2){
+            stage = MovementStage.Double_Jump;
         }
 
         anim.SetInteger("stage",(int)stage);
     }
-    private bool IsGrounded(){
-      return Physics2D.BoxCast(coll.bounds.center,coll.bounds.size, 0f,Vector2.down, .1f, jumpableGround );
-    }
-    }
+}
+    // private bool IsGrounded(){
+    //   return Physics2D.BoxCast(coll.bounds.center,coll.bounds.size, 0f,Vector2.down, .1f, jumpableGround );
+    // }
+    
 
