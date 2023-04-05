@@ -25,16 +25,26 @@ public class Player_Die : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject.CompareTag("trap")){
             takeDamage(); 
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0, 7);
         }
         if(other.gameObject.CompareTag("monster")){
             takeDamage(); 
+            
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0, 7);
         }
        
     }
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.gameObject.CompareTag("monster")){
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0, 7);
+        }
+    }
     void takeDamage(int damage = 1) {
+        
         if(!isImmune){
             HP -= damage;
             healthSlider.value = HP;
+            anim.SetTrigger("Hit");
             if (HP <= 0)
             {
                 Die();

@@ -7,9 +7,8 @@ public class Monster : MonoBehaviour
 
     public GameObject[] wayPoints;
     public int currentWayPoints=0; 
-    private float speed = 3f;
-    private Animator anim;
-    private Rigidbody2D rb;
+    private float speed = 2f;
+    
 
     private SpriteRenderer sprite;
     // private Collider2D col;
@@ -36,9 +35,15 @@ public class Monster : MonoBehaviour
     }
 
    private void OnTriggerEnter2D(Collider2D other) {
-        Destroy(gameObject);
-    }
+    
+    if(other.gameObject.CompareTag("Player")){
 
+        Animator animator = GetComponent<Animator>();
+        animator.SetTrigger("monsterDie");
+        Destroy(gameObject, 0.5f);
+    }
+    }
+    
 
 }
 

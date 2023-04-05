@@ -6,15 +6,16 @@ using UnityEngine.UI;
 public class Cherry : MonoBehaviour
 {
     private Animator anim;
-    private int cherries=0;
-    public Text CherryText;
     
    private void OnTriggerEnter2D(Collider2D other) {
-    if(other.gameObject.CompareTag("Cherry")){
+    if(other.gameObject.CompareTag("Player")){
+        Animator animator = GetComponent<Animator>();
+        animator.SetTrigger("collected");
+        Invoke("DestroyCherry", 1f);
         
-        // Destroy(other.gameObject);
-        cherries++;
-        CherryText.text =": "+ cherries;
-    }
+   }
+   }
+   private void DestroyCherry(){
+       Destroy(gameObject);
    }
 }

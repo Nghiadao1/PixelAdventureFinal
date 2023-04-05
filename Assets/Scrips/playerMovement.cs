@@ -15,6 +15,7 @@ public class playerMovement : MonoBehaviour
     public LayerMask jumpableGround;
     private bool IsGrounded;
     private int jumpCount;
+    
    
    
     
@@ -52,7 +53,7 @@ public class playerMovement : MonoBehaviour
   
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Ground")
+        if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "trap" || collision.gameObject.tag == "monster")
         {
             jumpCount = 0;
         }
@@ -76,10 +77,14 @@ public class playerMovement : MonoBehaviour
         }
         if(jumpCount==2){
             stage = MovementStage.Double_Jump;
+            if(rb2d.velocity.y< -1f){
+                stage = MovementStage.Falling;
+            }
         }
 
         anim.SetInteger("stage",(int)stage);
     }
+    
 }
     // private bool IsGrounded(){
     //   return Physics2D.BoxCast(coll.bounds.center,coll.bounds.size, 0f,Vector2.down, .1f, jumpableGround );
