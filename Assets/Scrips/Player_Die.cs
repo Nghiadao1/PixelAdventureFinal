@@ -9,7 +9,7 @@ public class Player_Die : MonoBehaviour
     // Start is called before the first frame update
     private Animator anim;
     private Rigidbody2D rb;
-    public float immunityDuration = 1.0f;
+    public float immunityDuration = 0.75f;
     public bool isImmune = false;
     public Slider healthSlider;
     public int HP = 3;
@@ -25,18 +25,18 @@ public class Player_Die : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject.CompareTag("trap")){
             takeDamage(); 
-            GetComponent<Rigidbody2D>().velocity = new Vector2(0, 7);
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0, 10);
         }
         if(other.gameObject.CompareTag("monster")){
             takeDamage(); 
             
-            GetComponent<Rigidbody2D>().velocity = new Vector2(0, 7);
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0, 10);
         }
        
     }
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.CompareTag("monster")){
-            GetComponent<Rigidbody2D>().velocity = new Vector2(0, 7);
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0, 10);
         }
     }
     void takeDamage(int damage = 1) {
@@ -64,8 +64,9 @@ public class Player_Die : MonoBehaviour
     }
 
     private void Die(){
+        anim.SetTrigger("Death");
         rb.bodyType = RigidbodyType2D.Static;
-        anim.SetTrigger("Death");  
+          
     }
     private void RestartLevel(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
