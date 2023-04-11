@@ -6,141 +6,171 @@ using UnityEngine;
 public class JumpWall : MonoBehaviour
 {
    
-    private float Speed=7f;
-    private float jump=7f;
-    private float moveNgang=0f;
-    private BoxCollider2D coll;
-    private SpriteRenderer sprite;
-    public Rigidbody2D rb2d;
+   
     public Animator anim;
-    private enum MovementStage {idle,Running,Jumping, Falling, Double_Jump};
-    public LayerMask jumpableGround;
-    private bool IsGrounded;
-    private int jumpCount;
+     
+    private float horizontal;
+    private float speed = 8f;
+    private float jumpingPower = 16f;
+    private bool isFacingRight = true;
+
     private bool isWallSliding;
-    private float wallSlideSpeed = 0.5f;
-    private float wallJumpForce = 10f;
-    private float wallStickTime = 0.1f;
-    private float lastWallJumpTime;
-    private float lastWallStickTime;
-    private int wallDirection;
+    private float wallSlidingSpeed = 2f;
+
+    private bool isWallJumping;
+    private float wallJumpingDirection;
+    private float wallJumpingTime = 0.2f;
+    private float wallJumpingCounter;
+    private float wallJumpingDuration = 0.4f;
+    private Vector2 wallJumpingPower = new Vector2(8f, 16f);
+    private enum MovementStage {idle,Running,Jumping, Falling, Double_Jump};
+    private SpriteRenderer sprite;
+    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private Transform wallCheck;
+    [SerializeField] private LayerMask wallLayer;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+    }
+    private void Update()
+    {
+        horizontal = Input.GetAxis("Horizontal");
+
+        if (Input.GetButtonDown("Jump") && IsGrounded())
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+        }
+
+        if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+        }
+        AnimationUpdate();
+        WallSlide();
+        WallJump();
+
+        if (!isWallJumping)
+        {
+            Flip();
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (!isWallJumping)
+        {
+            rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+        }
+    }
+
+    private bool IsGrounded()
+    {
+        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+    }
+
+    private bool IsWalled()
+    {
+        return Physics2D.OverlapCircle(wallCheck.position, 0.2f, wallLayer);
+    }
+
+    private void WallSlide()
+    {
+
+        if (IsWalled() && !IsGrounded() && horizontal != 0f)
+        {
+            isWallSliding = true;
+            rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlidingSpeed, float.MaxValue));
+        }
+        else
+        {
+            isWallSliding = false;
+        }
+    }
+
+    private void WallJump()
+    {
+        if (isWallSliding)
+        {
+            isWallJumping = false;
+            wallJumpingDirection = -transform.localScale.x;
+            wallJumpingCounter = wallJumpingTime;
+
+            CancelInvoke(nameof(StopWallJumping));
+        }
+        else
+        {
+            wallJumpingCounter -= Time.deltaTime;
+        }
+
+        if (Input.GetButtonDown("Jump") && wallJumpingCounter > 0f)
+        {
+            isWallJumping = true;
+            rb.velocity = new Vector2(wallJumpingDirection * wallJumpingPower.x, wallJumpingPower.y);
+            wallJumpingCounter = 0f;
+
+            if (transform.localScale.x != wallJumpingDirection)
+            {
+                isFacingRight = !isFacingRight;
+                Vector3 localScale = transform.localScale;
+                localScale.x *= -1f;
+                transform.localScale = localScale;
+            }
+
+            Invoke(nameof(StopWallJumping), wallJumpingDuration);
+        }
+    }
+
+    private void StopWallJumping()
+    {
+        isWallJumping = false;
+    }
+
+    private void Flip()
+    {
+        if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
+        {
+            isFacingRight = !isFacingRight;
+            Vector3 localScale = transform.localScale;
+            localScale.x *= -1f;
+            transform.localScale = localScale;
+        }
+    }
+
+    void AnimationUpdate()
+    {
+        
+        if (IsGrounded())
+        {
+            if (horizontal != 0f)
+            {
+                anim.SetInteger("MovementStage", (int)MovementStage.Running);
+                sprite.flipX = true;
+            }
+            else
+            {
+                anim.SetInteger("MovementStage", (int)MovementStage.idle);
+            }
+        }
+        else
+        {
+            if (rb.velocity.y > 0f)
+            {
+                anim.SetInteger("MovementStage", (int)MovementStage.Jumping);
+            }
+            else if (rb.velocity.y < 0f)
+            {
+                anim.SetInteger("MovementStage", (int)MovementStage.Falling);
+            }
+        }
+    }
+}
     
    
    
     
     // Start is called before the first frame update
-    void Start()
-    {
-         rb2d = GetComponent<Rigidbody2D> ();
-         coll = GetComponent<BoxCollider2D>();
-         sprite = GetComponent<SpriteRenderer> ();
-         anim = GetComponent<Animator>();
-     }
-
-   
-    void Update() 
-{
-    // di chuyen ngang
-    moveNgang = Input.GetAxis("Horizontal");
     
-    if (isWallSliding)
-    {
-        anim.SetTrigger("jumpWall");
-        // Giữ nhân vật ở tốc độ trượt tường
-        rb2d.velocity = new Vector2(rb2d.velocity.x, Mathf.Clamp(rb2d.velocity.y, -wallSlideSpeed, float.MaxValue));
-        
-        if (Input.GetButtonDown("Jump"))
-        {
-            // Nhảy từ tường
-            Vector2 jumpDirection = new Vector2(-wallDirection, 1f);
-            rb2d.velocity = jumpDirection * wallJumpForce;
-            isWallSliding = false;
-            jumpCount++;
-            lastWallJumpTime = Time.time;
-        }
-        
-        if (Time.time > lastWallStickTime + wallStickTime)
-        {
-            isWallSliding = false;
-        }
-    }
-    else
-    {
-        // Di chuyển bình thường khi không bám tường
-        rb2d.velocity = new Vector2(Speed * moveNgang, rb2d.velocity.y);
-
-        if (Input.GetButtonDown("Jump") && jumpCount < 2)
-        {
-            // Nhảy bình thường
-            rb2d.velocity = new Vector2(rb2d.velocity.x, jump);
-            jumpCount++;
-        }
-        // update animation
-        UpdateAnimationUpdate();
-    }
-
-    // Kiểm tra xem nhân vật có đang bám tường không
-    if (!isWallSliding)
-    {
-        IsGrounded = Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, 0.1f, jumpableGround);
-        if (IsGrounded)
-        {
-            jumpCount = 0;
-        }
-    }
-
-    
-}
-    
-  
-    void OnCollisionEnter2D(Collision2D col)
-{
-    if (col.gameObject.CompareTag("Ground") || col.gameObject.CompareTag("trap") || col.gameObject.CompareTag("monster"))
-    {
-        jumpCount = 0;
-    }
-    else if (col.gameObject.CompareTag("Wall"))
-    {
-        isWallSliding = true;
-        wallDirection = col.contacts[0].normal.x > 0 ? -1 : 1;
-        lastWallStickTime = Time.time;
-    }
-}
-
-void OnCollisionExit2D(Collision2D col)
-{
-    if (col.gameObject.CompareTag("Wall"))
-    {
-        isWallSliding = false;
-    }
-}
-
-    //Animation
-    void UpdateAnimationUpdate(){
-        MovementStage stage;
-        if(moveNgang>0f){
-            stage = MovementStage.Running;
-            sprite.flipX = false;
-        } else if(moveNgang<0f){
-            stage = MovementStage.Running;
-             sprite.flipX = true;
-        } else {
-            stage = MovementStage.idle;
-        }
-        if(Input.GetKeyDown(KeyCode.Space)){
-            stage = MovementStage.Jumping;
-        } else if(rb2d.velocity.y< -1f){
-            stage = MovementStage.Falling;
-        }
-        if(jumpCount==2){
-            stage = MovementStage.Double_Jump;
-            if(rb2d.velocity.y< -1f){
-                stage = MovementStage.Falling;
-            }
-        }
-
-        anim.SetInteger("stage",(int)stage);
-    }
-    
-
-}
