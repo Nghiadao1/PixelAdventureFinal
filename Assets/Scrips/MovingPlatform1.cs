@@ -6,7 +6,7 @@ public class MovingPlatform1 : MonoBehaviour
 {
     public GameObject[] waypoints;
     public int CurrentWaypoints=0; 
-    private float speed = 5f;
+    private float speed = 1.5f;
   
     
     private void Update()
@@ -22,9 +22,10 @@ public class MovingPlatform1 : MonoBehaviour
     }
      transform.position = Vector2.MoveTowards(transform.position, waypoints[CurrentWaypoints].transform.position, speed * Time.deltaTime);
     }
-    private void OnCollisionEnter2D(Collision2D other) {
-        if (other.gameObject.name == "Player"){
-        other.gameObject.transform.SetParent(transform);
+    
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.gameObject.tag == "Player"){
+            other.gameObject.transform.SetParent(transform);
         }
     }
     private void OnCollisionExit2D(Collision2D other)

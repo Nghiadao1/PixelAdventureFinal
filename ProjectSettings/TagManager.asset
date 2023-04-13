@@ -10,6 +10,8 @@ TagManager:
   - monster
   - BackGround
   - Wall
+  - CheckPoint
+  - Gem
   layers:
   - Default
   - TransparentFX
@@ -21,7 +23,7 @@ TagManager:
   - trap
   - BackGround
   - Wall
-  - 
+  - Player
   - 
   - 
   - 
@@ -46,6 +48,9 @@ TagManager:
   m_SortingLayers:
   - name: BackGround
     uniqueID: 3486458169
+    locked: 0
+  - name: Saw
+    uniqueID: 814632823
     locked: 0
   - name: ground
     uniqueID: 3797860321
