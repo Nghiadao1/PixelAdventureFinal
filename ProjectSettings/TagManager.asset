@@ -12,6 +12,11 @@ TagManager:
   - Wall
   - CheckPoint
   - Gem
+  - Item
+  - SpeedBuff
+  - HealthBuff
+  - TimeBuff
+  - ShieldBuff
   layers:
   - Default
   - TransparentFX
@@ -57,4 +62,7 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UI
+    uniqueID: 1813629175
     locked: 0

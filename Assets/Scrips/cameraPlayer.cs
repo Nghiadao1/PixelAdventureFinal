@@ -4,11 +4,20 @@ using UnityEngine;
 
 public class cameraPlayer : MonoBehaviour
 {
-    public Transform Player;
+    //set up list players
+    
+    public Transform Players;
+    void Start()
+    {
+        // set up gameobject player by tab
+        Players = GameObject.FindGameObjectWithTag("Player").transform;
+    }
 
     void Update()
     {
-        transform.position = new Vector3(Player.position.x, Player.position.y, -10);
-        
+        //set up camera follow player
+      
+            transform.position = new Vector3(Players.position.x, Players.position.y, transform.position.z);
+
     }
 }

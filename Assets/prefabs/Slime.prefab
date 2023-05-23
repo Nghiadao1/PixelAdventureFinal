@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 623408301787714364}
   - component: {fileID: 281602246530829323}
   - component: {fileID: 615698366246641897}
+  - component: {fileID: 2107653014417909758}
   m_Layer: 0
   m_Name: Slime
   m_TagString: monster
@@ -176,3 +177,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.0868225, y: 1.2605834}
   m_EdgeRadius: 0
+--- !u!114 &2107653014417909758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 623408301787713734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3912f1775c5fcc44acb07a1d28af29c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  rb: {fileID: 0}
+  spawnPoint: {x: 0, y: 0, z: 0}

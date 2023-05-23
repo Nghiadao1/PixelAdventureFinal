@@ -17,9 +17,10 @@ public class CheckPoint : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             anim.SetBool("isActivated", true);
-            Player_Die player = other.GetComponent<Player_Die>();
+            DameCaculator player = other.GetComponent<DameCaculator>();
             player.spawnPoint = transform.position;
             col.enabled = false;
         }
+
     }
 }
