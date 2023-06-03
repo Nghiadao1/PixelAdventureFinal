@@ -46,6 +46,10 @@ public class DameCaculator : MonoBehaviour
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, 15);
             anim.SetTrigger("Jump");
         }
+        if(other.gameObject.CompareTag("trap")){
+            audioJumpSource.Play();
+            takeDamage();
+        }
         
     }
     public void takeDamage(int damage = 1) {

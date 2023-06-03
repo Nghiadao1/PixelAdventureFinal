@@ -1,0 +1,22 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class URLButton : MonoBehaviour
+{
+    public string linkURL;
+
+    private Button button;
+
+    private void Start()
+    {
+        button = GetComponent<Button>();
+        button.onClick.AddListener(OpenLink);
+    }
+
+    private void OpenLink()
+    {
+        Application.OpenURL(linkURL);
+    }
+}

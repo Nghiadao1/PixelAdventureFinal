@@ -344,7 +344,7 @@ TextureImporter:
         width: 6
         height: 6
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -365,7 +365,7 @@ TextureImporter:
         width: 8
         height: 6
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -373,6 +373,111 @@ TextureImporter:
       bones: []
       spriteID: 05a6d484df58d4a48a009ff6af23db21
       internalID: -358982697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pixeladventure4 1_13
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 104
+        width: 6
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 544a56d40db76724e86ae321bda81c3b
+      internalID: -913546452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pixeladventure4 1_14
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 104
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d09eeafff37bfcb42a436ed027fa9c84
+      internalID: 1860985086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pixeladventure4 1_15
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 104
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42cb9e53d492dfa4d8b9f570b68df8ce
+      internalID: 81109571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pixeladventure4 1_16
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 104
+        width: 4
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4ff409aace3e7f41b4744985de9169b
+      internalID: 478439009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pixeladventure4 1_17
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 104
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90894559cb5caa04e8684fb6c5c08dc5
+      internalID: 1676222627
       vertices: []
       indices: 
       edges: []
@@ -389,6 +494,8 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Pixeladventure4 1_3: 360631122
+      Pixeladventure4 1_16: 478439009
+      Pixeladventure4 1_15: 81109571
       Pixeladventure4 1_1: -1244537810
       Pixeladventure4 1_12: -358982697
       Pixeladventure4 1_7: 44893644
@@ -399,7 +506,10 @@ TextureImporter:
       Pixeladventure4 1_0: 837442791
       Pixeladventure4 1_10: 1004172661
       Pixeladventure4 1_11: -1998774477
+      Pixeladventure4 1_17: 1676222627
+      Pixeladventure4 1_14: 1860985086
       Pixeladventure4 1_2: -1138812731
+      Pixeladventure4 1_13: -913546452
       Pixeladventure4 1_4: 1783490502
   spritePackingTag: 
   pSDRemoveMatte: 0

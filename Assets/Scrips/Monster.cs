@@ -7,7 +7,7 @@ public class Monster : MonoBehaviour
 
     public GameObject[] wayPoints;
     public int currentWayPoints=0; 
-    private float speed = 2f;
+    public static float speed = 2f;
     
 
     private SpriteRenderer sprite;
