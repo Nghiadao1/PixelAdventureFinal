@@ -8,9 +8,15 @@ public class Money_Manager : MonoBehaviour
     private int moneyCollected = 0;
     public Text moneyText;
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
     void Start()
     {
         LoadMoney();
+        moneyText.text =":"+ moneyCollected.ToString();
     }
     void SaveMoney()
     {
@@ -32,7 +38,6 @@ public class Money_Manager : MonoBehaviour
     {
         moneyCollected += Score.cherries;
         SaveMoney();
-        moneyText.text =":"+ moneyCollected.ToString();
         Debug.Log("Money collected: " + moneyCollected);
     }
 }

@@ -348,7 +348,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4.000061, y: 109.99997}
+  m_AnchoredPosition: {x: -4.000061, y: 98}
   m_SizeDelta: {x: 299.8994, y: 56.272}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &121224289498260097
@@ -379,7 +379,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1342444867, guid: ff106a0a53af69e4998a41ca00b42e66, type: 3}
+  m_Sprite: {fileID: -16445675, guid: 6971c269b9c2b5f45b337027d8d0586a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -577,7 +577,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4, y: 110}
+  m_AnchoredPosition: {x: -4, y: 92}
   m_SizeDelta: {x: 299.8994, y: 56.272}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3979541140060536244
@@ -608,7 +608,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1342444867, guid: ff106a0a53af69e4998a41ca00b42e66, type: 3}
+  m_Sprite: {fileID: -16445675, guid: 6971c269b9c2b5f45b337027d8d0586a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -886,7 +886,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4, y: 115.44503}
+  m_AnchoredPosition: {x: -4, y: 84}
   m_SizeDelta: {x: 299.8994, y: 56.272}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7567397693531290049
@@ -917,7 +917,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1342444867, guid: ff106a0a53af69e4998a41ca00b42e66, type: 3}
+  m_Sprite: {fileID: 1583456403, guid: ff106a0a53af69e4998a41ca00b42e66, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1791,6 +1791,7 @@ GameObject:
   - component: {fileID: 8872985250949700448}
   - component: {fileID: 8872985250949700451}
   - component: {fileID: 8872985250949700450}
+  - component: {fileID: 2321074680782485986}
   m_Layer: 5
   m_Name: BackToMenuButton
   m_TagString: Untagged
@@ -1847,7 +1848,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -69932503, guid: ff106a0a53af69e4998a41ca00b42e66, type: 3}
+  m_Sprite: {fileID: 901179832, guid: ff106a0a53af69e4998a41ca00b42e66, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1913,6 +1914,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2321074680782485986}
+        m_TargetAssemblyTypeName: Money_Manager, Assembly-CSharp
+        m_MethodName: CollectMoney
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8872985250949700450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1927,6 +1940,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PausePanel: {fileID: 0}
   level: 0
+--- !u!114 &2321074680782485986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8872985250949700460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48dd8774ddc26014ea330d14a63b595b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moneyText: {fileID: 0}
 --- !u!1 &8872985251057964449
 GameObject:
   m_ObjectHideFlags: 0
@@ -1966,7 +1992,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -3.3108654}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -360, y: 199}
+  m_AnchoredPosition: {x: -360, y: 163}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8872985251057964378
@@ -1997,7 +2023,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -69932503, guid: ff106a0a53af69e4998a41ca00b42e66, type: 3}
+  m_Sprite: {fileID: 901179832, guid: ff106a0a53af69e4998a41ca00b42e66, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -2459,7 +2485,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -69932503, guid: ff106a0a53af69e4998a41ca00b42e66, type: 3}
+  m_Sprite: {fileID: 901179832, guid: ff106a0a53af69e4998a41ca00b42e66, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2762,7 +2788,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -69932503, guid: ff106a0a53af69e4998a41ca00b42e66, type: 3}
+  m_Sprite: {fileID: 901179832, guid: ff106a0a53af69e4998a41ca00b42e66, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3223,7 +3249,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -69932503, guid: ff106a0a53af69e4998a41ca00b42e66, type: 3}
+  m_Sprite: {fileID: 901179832, guid: ff106a0a53af69e4998a41ca00b42e66, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3658,7 +3684,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -69932503, guid: ff106a0a53af69e4998a41ca00b42e66, type: 3}
+  m_Sprite: {fileID: 901179832, guid: ff106a0a53af69e4998a41ca00b42e66, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3886,6 +3912,7 @@ GameObject:
   - component: {fileID: 8872985252212770428}
   - component: {fileID: 8872985252212770431}
   - component: {fileID: 8872985252212770430}
+  - component: {fileID: 4779947950064889084}
   m_Layer: 5
   m_Name: NextLevelButton
   m_TagString: Untagged
@@ -3942,7 +3969,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -69932503, guid: ff106a0a53af69e4998a41ca00b42e66, type: 3}
+  m_Sprite: {fileID: 901179832, guid: ff106a0a53af69e4998a41ca00b42e66, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4008,6 +4035,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4779947950064889084}
+        m_TargetAssemblyTypeName: Money_Manager, Assembly-CSharp
+        m_MethodName: CollectMoney
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8872985252212770430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4022,6 +4061,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PausePanel: {fileID: 8872985252532952658}
   level: 0
+--- !u!114 &4779947950064889084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8872985252212770424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48dd8774ddc26014ea330d14a63b595b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moneyText: {fileID: 0}
 --- !u!1 &8872985252405548724
 GameObject:
   m_ObjectHideFlags: 0
@@ -4116,7 +4168,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8872985252532952659
 RectTransform:
   m_ObjectHideFlags: 0

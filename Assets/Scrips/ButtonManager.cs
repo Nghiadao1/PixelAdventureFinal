@@ -13,6 +13,7 @@ public class ButtonManager : MonoBehaviour
     public int level;
     void start(){
         PausePanel = GameObject.Find("PausePanel");
+
     }
     public void PlayButton()
     {
@@ -34,6 +35,8 @@ public class ButtonManager : MonoBehaviour
     public void NextLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        // call function to collect money in Money_Manager.cs
+        FindObjectOfType<Money_Manager>().CollectMoney();
         
     }
     public void RestartLevel()

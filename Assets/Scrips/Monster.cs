@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class Monster : MonoBehaviour
 {
@@ -8,8 +10,6 @@ public class Monster : MonoBehaviour
     public GameObject[] wayPoints;
     public int currentWayPoints=0; 
     public static float speed = 2f;
-    
-
     private SpriteRenderer sprite;
     // private Collider2D col;
 
@@ -31,7 +31,8 @@ public class Monster : MonoBehaviour
             }
        
     }
-     transform.position = Vector2.MoveTowards(transform.position, wayPoints[currentWayPoints].transform.position, speed * Time.deltaTime);
+     transform.position = Vector2.MoveTowards(transform.position, 
+     wayPoints[currentWayPoints].transform.position, speed * Time.deltaTime);
     }
 
    private void OnTriggerEnter2D(Collider2D other) {

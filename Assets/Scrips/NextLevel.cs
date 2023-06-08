@@ -15,6 +15,7 @@ public class NextLevel : MonoBehaviour
                 // Load the next level
                 Score.gemKeys = 0;
                 SuccessPanel.SetActive(true);
+                
               }
          }
    }
