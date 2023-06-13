@@ -5,8 +5,15 @@ using UnityEngine.UI;
 public class Money_Manager : MonoBehaviour
 {
     private string savePath = "money.txt";
-    private int moneyCollected = 0;
+    public static int moneyCollected = 0;
     public Text moneyText;
+
+
+    public void AddMoney (int amount) {
+        moneyCollected+=amount;
+        SaveMoney();
+        UpdateWallet();
+    }
 
     private void Awake()
     {
@@ -16,15 +23,21 @@ public class Money_Manager : MonoBehaviour
     void Start()
     {
         LoadMoney();
-        moneyText.text =":"+ moneyCollected.ToString();
+        UpdateWallet();
     }
-    void SaveMoney()
+
+    private void UpdateWallet()
+    {
+        moneyText.text = $":{moneyCollected.ToString()}";
+    }
+
+    public void SaveMoney()
     {
         string data = moneyCollected.ToString();
         File.WriteAllText(savePath, data);
     }
 
-    void LoadMoney()
+    public void LoadMoney()
     {
         if (File.Exists(savePath))
         {

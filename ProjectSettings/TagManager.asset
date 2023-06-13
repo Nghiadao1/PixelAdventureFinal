@@ -17,6 +17,8 @@ TagManager:
   - HealthBuff
   - TimeBuff
   - ShieldBuff
+  - characterShop
+  - itemShop
   layers:
   - Default
   - TransparentFX
