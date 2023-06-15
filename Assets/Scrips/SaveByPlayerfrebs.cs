@@ -12,6 +12,8 @@ public class SaveByPlayerfrebs : MonoBehaviour
         CountSpeed,
         CountShield,
         CountHP,
+        Money,
+
         
     }
 

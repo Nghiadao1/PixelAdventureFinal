@@ -99,8 +99,6 @@ public class playerMovement : MonoBehaviour
         } else {
             // nhân vật dừng lại và set animation idle
             rb2d.velocity = new Vector2(0, rb2d.velocity.y);
-
-            anim.SetTrigger("Idle");
         }
     }
     private void Flip()
@@ -160,6 +158,7 @@ public class playerMovement : MonoBehaviour
         {
             
             anim.SetTrigger("jumpWall");  
+            Debug.Log("jumpWall");
             RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right * wallDirection, distanceToWall, whatIsWall);
             if (hit.collider != null)
             {
@@ -208,17 +207,21 @@ public class playerMovement : MonoBehaviour
   
         if(isMoving && IsGrounded == true && isWallSliding == false){
             anim.SetTrigger("Run");
+            Debug.Log("Run");
         }
         if(!isMoving && IsGrounded == true && isWallSliding == false){
             anim.SetTrigger("Idle");
+            Debug.Log("Idle");
         }
         
         if(rb2d.velocity.y< -1f){
             anim.SetTrigger("Fall");
+            Debug.Log("Fall");
         }
         //double jump
         if(jumpCount==2){
             anim.SetBool("DoubleJump", true);
+            Debug.Log("DoubleJump");
         }else {
             anim.SetBool("DoubleJump", false);
         }

@@ -19,6 +19,7 @@ TagManager:
   - ShieldBuff
   - characterShop
   - itemShop
+  - Audio
   layers:
   - Default
   - TransparentFX

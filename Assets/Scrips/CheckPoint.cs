@@ -7,6 +7,7 @@ public class CheckPoint : MonoBehaviour
 {
     private Animator anim;
     private Collider2D col;
+    [SerializeField] private AudioSource audioCheckPointSource;
     void Awake()
     {
         anim = GetComponent<Animator>();
@@ -20,6 +21,7 @@ public class CheckPoint : MonoBehaviour
             DameCaculator player = other.GetComponent<DameCaculator>();
             player.spawnPoint = transform.position;
             col.enabled = false;
+            audioCheckPointSource.Play();
         }
 
     }

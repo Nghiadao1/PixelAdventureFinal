@@ -15,7 +15,7 @@ public class Score : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.CompareTag("Cherry")){
-        cherries++;
+        cherries+=5;
         scoreText.text =":"+ cherries;
         audioSource.Play();
         // reset cherries to 0 when restart the level

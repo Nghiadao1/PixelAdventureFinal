@@ -8,14 +8,14 @@ public class Pig_manager : MonoBehaviour
     private int PigHP = 2; 
     private float speed = 2f;
     private float angrySpeed = 4f;
-    private bool isAngry = false;
+    // private bool isAngry = false;
     public Animator anim3;
     public GameObject[] wayPoints;
     public int currentWayPoints=0;
     private SpriteRenderer sprite;
     
     private void Start() {
-        isAngry = false;
+        // isAngry = false;
         anim3 = GetComponent<Animator>();
         PigHP = 2;
         sprite = GetComponent<SpriteRenderer>();
@@ -37,7 +37,7 @@ public class Pig_manager : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.CompareTag("Player")){
-            isAngry = true;
+            // isAngry = true;
             speed = angrySpeed;
             PigHP -= 1;
             anim3.SetTrigger("hit1");

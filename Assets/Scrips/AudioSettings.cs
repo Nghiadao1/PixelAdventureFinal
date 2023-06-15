@@ -13,6 +13,15 @@ public class AudioSettings : MonoBehaviour
     [SerializeField] private GameObject V_SFX;
     [SerializeField] private GameObject X_SFX;
     
+    void Awake()
+    {
+        // nhận component X cho gameObject X
+        X = GameObject.Find("X");
+        V = GameObject.Find("V");
+        X_SFX = GameObject.Find("X_SFX");
+        V_SFX = GameObject.Find("V_SFX");
+    }
+    
 
     void Start()
     {
