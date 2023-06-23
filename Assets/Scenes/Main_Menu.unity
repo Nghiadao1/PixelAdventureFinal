@@ -400,6 +400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PausePanel: {fileID: 0}
+  AdsPanel: {fileID: 0}
   level: 0
 --- !u!1 &484291885
 GameObject:
@@ -597,6 +598,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PausePanel: {fileID: 0}
+  AdsPanel: {fileID: 0}
   level: 0
 --- !u!1 &513386253
 GameObject:
@@ -1060,6 +1062,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PausePanel: {fileID: 0}
+  AdsPanel: {fileID: 0}
   level: 0
 --- !u!1 &1220810897
 GameObject:
@@ -1314,6 +1317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PausePanel: {fileID: 0}
+  AdsPanel: {fileID: 0}
   level: 0
 --- !u!1 &1297609876
 GameObject:
@@ -1463,6 +1467,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PausePanel: {fileID: 0}
+  AdsPanel: {fileID: 0}
   level: 0
 --- !u!1 &1328535668
 GameObject:
@@ -2146,6 +2151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PausePanel: {fileID: 0}
+  AdsPanel: {fileID: 0}
   level: 0
 --- !u!1001 &8322293565137489646
 PrefabInstance:

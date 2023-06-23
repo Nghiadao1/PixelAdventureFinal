@@ -10,6 +10,7 @@ using UnityEngine.UI;
 public class ButtonManager : MonoBehaviour
 {
     public GameObject PausePanel;
+    public GameObject AdsPanel;
     public int level;
     void start(){
         PausePanel = GameObject.Find("PausePanel");
@@ -73,6 +74,12 @@ public class ButtonManager : MonoBehaviour
     public void Rating()
     {
         SceneManager.LoadScene("Rating");
+    }
+    public void ActivePanelAds(){
+        AdsPanel.SetActive(true);
+    }
+    public void DeactivePanelAds(){
+        AdsPanel.SetActive(false);
     }
     
 }

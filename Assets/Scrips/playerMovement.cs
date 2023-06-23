@@ -1,3 +1,5 @@
+
+using System.Data.Common;
 using System.Threading;
 using System;
 using System.Collections;
@@ -6,12 +8,15 @@ using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
+using UnityEngine.Animations;
+
 
 
 public class playerMovement : MonoBehaviour
 {
     public static float Speed=10f;
-    private float jump=14f;
+    public float jump=16f;
     private float moving=0f;
     private BoxCollider2D coll;
     private SpriteRenderer sprite;
@@ -21,21 +26,42 @@ public class playerMovement : MonoBehaviour
     public LayerMask whatIsWall;
     private bool IsGrounded;
     private int jumpCount;
-    private float wallSlideSpeed = 0.5f;
+    private int jumpCountMax = 2;
+    private float wallSlideSpeed = 1f;
     private int wallDirection;
     private float wallJumpForce = 10f;
     private float lastWallJumpTime;
+    
     private bool isWallSliding = false;
     private float distanceToWall = 0.5f;
     private bool isMoving = false;
     private bool moveUp = false;
     
     [SerializeField] private AudioSource audioSource;
-    
+    private bool animActive = false;
+    private AnimatorClipInfo[] clipInfo;
 
+    public bool IsWallSliding
+    {
+        get => isWallSliding; set
+        {
+            if(value){
+                Debug.Log("WallSliding");
+            }
+            isWallSliding = value;
+        }
+    }
 
-    // ground check
- 
+    public enum AnimationState{
+        idle,
+        run,
+        jump,
+        doubleJump,
+        jumpWall,
+        fall,
+        hurt,
+        death
+    }
     
     // Start is called before the first frame update
     void Start()
@@ -46,49 +72,54 @@ public class playerMovement : MonoBehaviour
          anim = GetComponent<Animator>();
          isMoving = false;
          moveUp = false; 
+         
      }
     void Update()
     {
         Flip();
         MoveJump();
-        JumpWall();
+        // JumpWall();
         WallSlip();
         UpdateAnimationUpdate();
     }
    
    
     public void SetDownMoveUp(){
-        moveUp = true;
+        if(jumpCount < 2){
+            moveUp = true;
+        }
+       
+        
+
     }
 
     private void MoveJump()
     {
-        if (moveUp == true && jumpCount < 2)
-        {
+
+        if(moveUp){
+            if(IsWallSliding){
+                lastWallJumpTime = Time.time;
+                jumpCount=0;
+            }
+            IsWallSliding = false;
             audioSource.Play();
             rb2d.velocity = new Vector2(rb2d.velocity.x, jump);
+            TriggerAnimation("Jump");
             jumpCount++;
-            anim.SetTrigger("Jump");
             moveUp = false;
-            Debug.Log("Loooxi zum");
         }
-        
     }
     
     public void OnButtonLeftDown(){
         isMoving = true;
         moving = -Speed;
-
     }
     public void OnButtonRightDown(){
         isMoving= true;
         moving = Speed;
-
-
     }
     public void OnButtonLeftUp(){
         isMoving = false;
-        
     }
     public void OnButtonRightUp(){
         isMoving = false;
@@ -96,6 +127,10 @@ public class playerMovement : MonoBehaviour
     private void FixedUpdate() {
         if(isMoving){
             rb2d.velocity = new Vector2(moving, rb2d.velocity.y);
+            if(IsGrounded && !IsWallSliding){
+                TriggerAnimation("Run");
+            }
+
         } else {
             // nhân vật dừng lại và set animation idle
             rb2d.velocity = new Vector2(0, rb2d.velocity.y);
@@ -113,25 +148,22 @@ public class playerMovement : MonoBehaviour
         }
     }
     void WallSlip(){
-        if(isWallSliding == true){
-            anim.SetTrigger("jumpWall");
+        if(IsWallSliding == true && moveUp == false){
+            TriggerAnimation("jumpWall");
             if(rb2d.velocity.y < -wallSlideSpeed){
                 rb2d.velocity = new Vector2(rb2d.velocity.x, -wallSlideSpeed);
             }
-        }
-    }
-    void JumpWall(){
-        if(moveUp == true && isWallSliding){
-            rb2d.velocity = new Vector2(wallJumpForce * wallDirection, jump);
-            lastWallJumpTime = Time.time;
-            isWallSliding = false;
-            anim.SetTrigger("Jump");
+        } else if(IsWallSliding == true && moveUp == true){
+            if(Time.time < lastWallJumpTime + 0.2f){
+                rb2d.velocity = new Vector2(-wallDirection * wallJumpForce, jump);
+            }
         }
     }
     void OnCollisionExit2D(Collision2D other)
     {
-        if (other.gameObject.tag == "Wall"){
-            isWallSliding = false;
+        if (other.gameObject.tag == "Wall")
+        {
+            IsWallSliding = false;
         }
         if (other.gameObject.tag == "Ground")
         {
@@ -148,17 +180,16 @@ public class playerMovement : MonoBehaviour
     }
 
     private void CheckJumpInWall(Collision2D collision){
-        if(collision.gameObject.tag == "Wall" && isMoving ==true){
-            isWallSliding = true;
+        if(collision.gameObject.tag == "Wall" && !IsWallSliding){
+            IsWallSliding = true;
         }
      }
     private void CheckAnimationJumpWall()
     {
-        if (isWallSliding == true)
+        if (IsWallSliding == true)
         {
             
-            anim.SetTrigger("jumpWall");  
-            Debug.Log("jumpWall");
+            // TriggerAnimation("jumpWall");  
             RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right * wallDirection, distanceToWall, whatIsWall);
             if (hit.collider != null)
             {
@@ -173,10 +204,10 @@ public class playerMovement : MonoBehaviour
     }
     private void CheckWallSliding(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Wall")
+        if (collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Wall" && !IsWallSliding)
         {
             
-            isWallSliding = true;
+            IsWallSliding = true;
             jumpCount = 0;
             wallDirection = collision.gameObject.transform.position.x > transform.position.x ? -1 : 1;
         }
@@ -190,7 +221,7 @@ public class playerMovement : MonoBehaviour
             IsGrounded = true;
             jumpCount = 0;
             moveUp = false;
-            anim.SetBool("DoubleJump", false);
+            BoolAnimation("DoubleJump", false);
             
         }       
     }
@@ -202,32 +233,57 @@ public class playerMovement : MonoBehaviour
         }
     }
 
+    private void BoolAnimation(string name, bool value){
+      if(animActive == false)
+        {
+            animActive = true;
+            anim.SetBool(name, value);
+            resetAnimationActive();
+            Debug.Log("BoolAnimation: " + name + " " + value);
+        }
+
+    }
+
+    private void resetAnimationActive()
+    {
+       animActive = false;
+
+    }
+
+    private void TriggerAnimation(string name){
+        if(animActive == false){
+            animActive = true;
+            anim.SetTrigger(name);
+            resetAnimationActive();
+            Debug.Log("TriggerAnimation: " + name);
+        }
+    }
+    
+
     void UpdateAnimationUpdate(){
       
   
-        if(isMoving && IsGrounded == true && isWallSliding == false){
-            anim.SetTrigger("Run");
-            Debug.Log("Run");
-        }
-        if(!isMoving && IsGrounded == true && isWallSliding == false){
-            anim.SetTrigger("Idle");
-            Debug.Log("Idle");
+        // if(isMoving && IsGrounded == true && IsWallSliding == false){
+        //     TriggerAnimation("Run");
+        // }
+        if(!isMoving && IsGrounded == true && IsWallSliding == false){
+            BoolAnimation("Idle", true);
+        } else {
+            BoolAnimation("Idle", false);
         }
         
         if(rb2d.velocity.y< -1f){
-            anim.SetTrigger("Fall");
-            Debug.Log("Fall");
+            TriggerAnimation("Fall");
         }
         //double jump
         if(jumpCount==2){
-            anim.SetBool("DoubleJump", true);
-            Debug.Log("DoubleJump");
+            BoolAnimation("DoubleJump", true);
         }else {
-            anim.SetBool("DoubleJump", false);
+            BoolAnimation("DoubleJump", false);
         }
-      
     }
     
     
 }
+
 

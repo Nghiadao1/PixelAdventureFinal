@@ -135,7 +135,7 @@ MonoBehaviour:
   whatIsWall:
     serializedVersion: 2
     m_Bits: 0
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 7462774144859707049}
 --- !u!114 &4187163683258504514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,8 +153,8 @@ MonoBehaviour:
   healthSlider: {fileID: 0}
   spawnPoint: {x: 0, y: 0, z: 0}
   audioHitSource: {fileID: 0}
-  audioDeathSource: {fileID: 0}
-  audioJumpSource: {fileID: 0}
+  audioDeathSource: {fileID: 3890101259237592997}
+  audioJumpSource: {fileID: 7462774144859707049}
 --- !u!95 &88218043032531045
 Animator:
   serializedVersion: 5
@@ -226,6 +226,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 0}
   scoreGem: {fileID: 0}
+  audioSource: {fileID: 2958741742478976296}
 --- !u!82 &7462774144859707049
 AudioSource:
   m_ObjectHideFlags: 0

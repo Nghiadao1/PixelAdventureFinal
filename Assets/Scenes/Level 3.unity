@@ -12070,7 +12070,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 512653475303539228, guid: bd3cca2700efa4e41b3b5dcad1019ebd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -15
+      value: -13
       objectReference: {fileID: 0}
     - target: {fileID: 512653475303539228, guid: bd3cca2700efa4e41b3b5dcad1019ebd, type: 3}
       propertyPath: m_LocalRotation.w
@@ -12523,6 +12523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bd0801665c3a8c4fbf224a4884e560a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioCheckPointSource: {fileID: 0}
 --- !u!95 &794697924
 Animator:
   serializedVersion: 5
@@ -13436,6 +13437,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SuccessPanel: {fileID: 1887471360}
+  audioSuccessSource: {fileID: 0}
 --- !u!4 &1208765636 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6935003125032988777, guid: 0844606e5e646314d8fe0cbe4651bbf8, type: 3}

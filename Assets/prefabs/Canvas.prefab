@@ -1940,6 +1940,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PausePanel: {fileID: 0}
+  AdsPanel: {fileID: 0}
   level: 0
 --- !u!114 &2321074680782485986
 MonoBehaviour:
@@ -2123,6 +2124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PausePanel: {fileID: 8872985251698525135}
+  AdsPanel: {fileID: 0}
   level: 0
 --- !u!1 &8872985251096278428
 GameObject:
@@ -2565,6 +2567,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PausePanel: {fileID: 0}
+  AdsPanel: {fileID: 0}
   level: 0
 --- !u!1 &8872985251484529299
 GameObject:
@@ -2868,6 +2871,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PausePanel: {fileID: 8872985251698525135}
+  AdsPanel: {fileID: 0}
   level: 0
 --- !u!1 &8872985251698525135
 GameObject:
@@ -3329,6 +3333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PausePanel: {fileID: 8872985252532952658}
+  AdsPanel: {fileID: 0}
   level: 0
 --- !u!1 &8872985252015928168
 GameObject:
@@ -3764,6 +3769,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PausePanel: {fileID: 8872985251698525135}
+  AdsPanel: {fileID: 0}
   level: 0
 --- !u!1 &8872985252163451725
 GameObject:
@@ -4061,6 +4067,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PausePanel: {fileID: 8872985252532952658}
+  AdsPanel: {fileID: 0}
   level: 0
 --- !u!114 &4779947950064889084
 MonoBehaviour:
@@ -4239,6 +4246,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8872985250762350244}
     m_Modifications:
+    - target: {fileID: 1922407851893877966, guid: ad2cf65c62752bd4fa04df4005f1a386, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1922407851893877967, guid: ad2cf65c62752bd4fa04df4005f1a386, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 8.2
@@ -4257,11 +4268,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1922407852938851753, guid: ad2cf65c62752bd4fa04df4005f1a386, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 50.9631
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 1922407852938851753, guid: ad2cf65c62752bd4fa04df4005f1a386, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 3.8519
+      value: 15.5
       objectReference: {fileID: 0}
     - target: {fileID: 1922407852938851753, guid: ad2cf65c62752bd4fa04df4005f1a386, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -4269,7 +4280,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1922407852938851753, guid: ad2cf65c62752bd4fa04df4005f1a386, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 6.6
+      value: 7.75
       objectReference: {fileID: 0}
     - target: {fileID: 1922407853433635847, guid: ad2cf65c62752bd4fa04df4005f1a386, type: 3}
       propertyPath: m_Sprite
@@ -4295,21 +4306,37 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1922407853496187038, guid: ad2cf65c62752bd4fa04df4005f1a386, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -13.017
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922407853496187038, guid: ad2cf65c62752bd4fa04df4005f1a386, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -14.0447
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922407853496187038, guid: ad2cf65c62752bd4fa04df4005f1a386, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 6.508499
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922407853496187038, guid: ad2cf65c62752bd4fa04df4005f1a386, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.27219963
+      objectReference: {fileID: 0}
     - target: {fileID: 1922407853496187039, guid: ad2cf65c62752bd4fa04df4005f1a386, type: 3}
       propertyPath: m_Color.a
-      value: 0.40392157
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1922407853496187039, guid: ad2cf65c62752bd4fa04df4005f1a386, type: 3}
       propertyPath: m_Color.b
-      value: 0.16412498
+      value: 0.6320754
       objectReference: {fileID: 0}
     - target: {fileID: 1922407853496187039, guid: ad2cf65c62752bd4fa04df4005f1a386, type: 3}
       propertyPath: m_Color.g
-      value: 0.15266399
+      value: 0.3800828
       objectReference: {fileID: 0}
     - target: {fileID: 1922407853496187039, guid: ad2cf65c62752bd4fa04df4005f1a386, type: 3}
       propertyPath: m_Color.r
-      value: 0.7830189
+      value: 0.20075345
       objectReference: {fileID: 0}
     - target: {fileID: 1922407853506301588, guid: ad2cf65c62752bd4fa04df4005f1a386, type: 3}
       propertyPath: m_SizeDelta.x
@@ -4361,7 +4388,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1922407853599401284, guid: ad2cf65c62752bd4fa04df4005f1a386, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 45
+      value: 53.36
       objectReference: {fileID: 0}
     - target: {fileID: 1922407853599401284, guid: ad2cf65c62752bd4fa04df4005f1a386, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4397,7 +4424,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1922407853599401284, guid: ad2cf65c62752bd4fa04df4005f1a386, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -32
+      value: -38.82
       objectReference: {fileID: 0}
     - target: {fileID: 1922407853599401284, guid: ad2cf65c62752bd4fa04df4005f1a386, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4410,6 +4437,10 @@ PrefabInstance:
     - target: {fileID: 1922407853599401284, guid: ad2cf65c62752bd4fa04df4005f1a386, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922407853599401285, guid: ad2cf65c62752bd4fa04df4005f1a386, type: 3}
+      propertyPath: m_Value
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1922407853599401285, guid: ad2cf65c62752bd4fa04df4005f1a386, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
