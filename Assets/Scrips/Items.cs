@@ -11,20 +11,24 @@ using UnityEngine.SceneManagement;
 public class Items : MonoBehaviour
 {  
     public Slider healthSlider;
-    public GameObject ShieldOfPlayer;
+
     public Animator anim;
     public GameObject GamObject;
     public GameObject Speed_Image;
     public GameObject Shield_Image;
+    public static bool isShieldActive = false;
    
-    void Update()
-    {
-        if(ShieldOfPlayer.activeSelf == true){
-            // SetShieldPosition();
-        }
+    // void Update()
+    // {
+    //     if(ShieldOfPlayer.activeSelf == true){
+    //         SetShieldPosition();
+    //     }
         
+    // }
+    private void Update() {
+        ResetSpeedBuff();
+        StopShield();
     }
-
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -40,12 +44,12 @@ public class Items : MonoBehaviour
             anim.SetTrigger("collected");
             Speed_Image.SetActive(true);
             Destroy(gameObject, 5.1f);
-            StartCoroutine("ResetSpeedBuff");
+            
         }
     }
-    IEnumerator ResetSpeedBuff()
+    void ResetSpeedBuff()
     {
-        yield return new WaitForSeconds(5f);
+        // yield return new WaitForSeconds(TimeSpeedCountDown.currentTimeBuffSpeed);
         CheckTimeBuffSpeed();
 
     }
@@ -81,27 +85,30 @@ public class Items : MonoBehaviour
             anim.SetTrigger("collected");
             Destroy(gameObject, 7.1f);
             StartShield();
-            StartCoroutine("StopShield");
 
         }
     }
     void StartShield(){
         Shield_Image.SetActive(true);
-        ShieldOfPlayer.SetActive(true); 
         DameCaculator.isImmune = true;
         DameCaculator.immunityDuration = 7f;
+        isShieldActive = true;
     }
     
-    private IEnumerator StopShield()
+     void StopShield()
     {
-        yield return new WaitForSeconds(7f);
-        DameCaculator.isImmune = false;
-        DameCaculator.immunityDuration = 0.75f;
-        ShieldOfPlayer.SetActive(false);
-        Shield_Image.SetActive(false);
+        // yield return new WaitForSeconds(TimeShieldCountDown.currentTimeBuffShield);
+        if(TimeShieldCountDown.currentTimeBuffShield <= 0f){
+            DameCaculator.isImmune = false;
+            DameCaculator.immunityDuration = 0.75f;
+            // ShieldOfPlayer.SetActive(false);
+            Shield_Image.SetActive(false);
+            isShieldActive = false;
+        }
+       
     }
 
     // void SetShieldPosition(){
-    //     ShieldOfPlayer.transform.position = Player.player.transform.position;
+    //     ShieldOfPlayer.transform.position = Player..transform.position;
     // }
 }

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class TimeShieldCountDown : MonoBehaviour
 {
-    public float timeBuffShield = 7f;
+    public static float timeBuffShield = 7f;
     public static float currentTimeBuffShield = 0f;
 
     public Text ShieldCountDown;

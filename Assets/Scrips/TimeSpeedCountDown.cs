@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class TimeSpeedCountDown : MonoBehaviour
 {
-    public float timeBuffSpeed = 5f;
+    public static float timeBuffSpeed = 5f;
     public static float currentTimeBuffSpeed = 0f;
 
     public Text SpeedCountDown;
@@ -24,7 +24,7 @@ public class TimeSpeedCountDown : MonoBehaviour
         SpeedCountDown.text = currentTimeBuffSpeed.ToString(": 0/s");
         if (currentTimeBuffSpeed <= 0)
         {
-            currentTimeBuffSpeed = 0;
+            currentTimeBuffSpeed = 0f;
         }
     }
 }

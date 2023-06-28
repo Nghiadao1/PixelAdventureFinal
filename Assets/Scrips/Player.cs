@@ -8,8 +8,8 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-
-[SerializeField]
+    
+    [SerializeField]
     Transform root;
     // Start is called before the first frame update
     void Awake()
@@ -23,11 +23,9 @@ public class Player : MonoBehaviour
             root.Find("Vitrual_Guy")?.gameObject?.SetActive(true);
         }
         // active game object name Fog_Man
-    
-
-        
-
     }
+
+    
     
 
     

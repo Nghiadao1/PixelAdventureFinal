@@ -14,6 +14,7 @@ public class BagItemsManager : MonoBehaviour
     public GameObject Speed_Image;
     public GameObject Shield_Image;
     public Slider healthSlider;
+    public GameObject ShieldOfPlayer;
     
     void Start()
     {
@@ -53,6 +54,7 @@ public class BagItemsManager : MonoBehaviour
             playerMovement.Speed = 15f;
             Speed_Image.SetActive(true);
             StartCoroutine("ResetSpeedBuff");
+            TimeSpeedCountDown.currentTimeBuffSpeed += TimeSpeedCountDown.timeBuffSpeed;
         }
         SaveByPlayerfrebs.SaveData(SaveByPlayerfrebs.DatabaseKey.CountSpeed, ItemData.countSpeed);
         Debug.Log("Speed: " + ItemData.countSpeed);
@@ -60,10 +62,11 @@ public class BagItemsManager : MonoBehaviour
     }
     IEnumerator ResetSpeedBuff()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(TimeSpeedCountDown.timeBuffSpeed);
         if(TimeSpeedCountDown.currentTimeBuffSpeed <= 0f){
             playerMovement.Speed = 10f;
             Speed_Image.SetActive(false);
+
         }
     }
     public void UsingItemHP()
@@ -85,6 +88,7 @@ public class BagItemsManager : MonoBehaviour
             ItemData.countShield--;
             StartShield();
             StartCoroutine("StopShield");
+            TimeShieldCountDown.currentTimeBuffShield += TimeShieldCountDown.timeBuffShield;
         }
         SaveByPlayerfrebs.SaveData(SaveByPlayerfrebs.DatabaseKey.CountShield, ItemData.countShield);
         Debug.Log("Shield: " + ItemData.countShield);
@@ -95,14 +99,19 @@ public class BagItemsManager : MonoBehaviour
         // ShieldOfPlayer.SetActive(true); 
         DameCaculator.isImmune = true;
         DameCaculator.immunityDuration = 7f;
+        Items.isShieldActive = true;
     }
     private IEnumerator StopShield()
     {
-        yield return new WaitForSeconds(7f);
-        DameCaculator.isImmune = false;
-        DameCaculator.immunityDuration = 0.75f;
-        // ShieldOfPlayer.SetActive(false);
-        Shield_Image.SetActive(false);
+        yield return new WaitForSeconds(TimeShieldCountDown.timeBuffShield);
+        if(TimeShieldCountDown.currentTimeBuffShield <= 0f){
+            DameCaculator.isImmune = false;
+            DameCaculator.immunityDuration = 0.75f;
+            // ShieldOfPlayer.SetActive(false);
+            Shield_Image.SetActive(false);
+            Items.isShieldActive = false;
+        }
+        
     }
     
     
