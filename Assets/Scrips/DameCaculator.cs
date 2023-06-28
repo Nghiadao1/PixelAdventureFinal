@@ -43,7 +43,7 @@ public class DameCaculator : MonoBehaviour
         if (other.gameObject.CompareTag("monster"))
         {
             audioJumpSource.Play();
-            GetComponent<Rigidbody2D>().velocity = new Vector2(0, 15);
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0, 25);
             anim.SetTrigger("Jump");
         }
         if(other.gameObject.CompareTag("trap")){
@@ -55,7 +55,7 @@ public class DameCaculator : MonoBehaviour
     public void takeDamage(int damage = 1) {
         audioHitSource.Play();
         anim.SetTrigger("Hit");
-        GetComponent<Rigidbody2D>().velocity = new Vector2(0, 15);
+        GetComponent<Rigidbody2D>().velocity = new Vector2(0, 25);
         if(!isImmune){
             startImmune();
             HP -= damage;

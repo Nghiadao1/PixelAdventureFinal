@@ -112,8 +112,8 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 3
-  m_Material: {fileID: 6200000, guid: 328878c8d40b8234b96c10f93356b5c9, type: 2}
+  m_GravityScale: 6
+  m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -130,6 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48892fe63b5007d49b62ceea16dff80d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jump: 17
   rb2d: {fileID: 698336010630951142}
   anim: {fileID: 0}
   jumpableGround:

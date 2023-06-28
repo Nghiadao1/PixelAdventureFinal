@@ -6,7 +6,7 @@ public class MovingPlatform1 : MonoBehaviour
 {
     public GameObject[] waypoints;
     public int CurrentWaypoints=0; 
-    private float speed = 1.5f;
+    private float speed = 2f;
   
     
     private void Update()

@@ -16,7 +16,7 @@ using UnityEngine.Animations;
 public class playerMovement : MonoBehaviour
 {
     public static float Speed=10f;
-    public float jump=16f;
+    public float jump;
     private float moving=0f;
     private BoxCollider2D coll;
     private SpriteRenderer sprite;
@@ -99,15 +99,26 @@ public class playerMovement : MonoBehaviour
         if(moveUp){
             if(IsWallSliding){
                 lastWallJumpTime = Time.time;
-                jumpCount=0;
+                IsWallSliding = false;
+                audioSource.Play();
+                rb2d.velocity = new Vector2(rb2d.velocity.x, jump);
+                TriggerAnimation("Jump");
+                jumpCount++;
+                moveUp = false;
+            } else{
+                audioSource.Play();
+                rb2d.velocity = new Vector2(rb2d.velocity.x, jump);
+                TriggerAnimation("Jump");
+                jumpCount++;
+                moveUp = false;
             }
-            IsWallSliding = false;
-            audioSource.Play();
-            rb2d.velocity = new Vector2(rb2d.velocity.x, jump);
-            TriggerAnimation("Jump");
-            jumpCount++;
-            moveUp = false;
+
+            
         }
+    }
+
+    private void SetTrueWallSliding(){
+        // set true wallsliding nếu như nhân vật đang chạm vào tường
     }
     
     public void OnButtonLeftDown(){
@@ -135,6 +146,11 @@ public class playerMovement : MonoBehaviour
             // nhân vật dừng lại và set animation idle
             rb2d.velocity = new Vector2(0, rb2d.velocity.y);
         }
+        // if (!isMoving && !IsGrounded && !isWallSliding && !moveUp && rb2d.velocity.y < 0f)
+        // {
+        //     TriggerAnimation("jumpWall");
+        //     isWallSliding = true;
+        // }
     }
     private void Flip()
     {
@@ -178,10 +194,21 @@ public class playerMovement : MonoBehaviour
         CheckAnimationJumpWall();
         CheckJumpInWall(collision);
     }
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        CheckJumpInWall(collision);
+        CheckGrounded(collision);
+    }
 
     private void CheckJumpInWall(Collision2D collision){
-        if(collision.gameObject.tag == "Wall" && !IsWallSliding){
+        // 
+        if(collision.gameObject.tag == "Wall" && !IsWallSliding && rb2d.velocity.y < 0f && !IsGrounded && !moveUp){
+            
             IsWallSliding = true;
+            TriggerAnimation("jumpWall");
+            jumpCount = 0;
+           
+            
         }
      }
     private void CheckAnimationJumpWall()
@@ -210,7 +237,7 @@ public class playerMovement : MonoBehaviour
             IsWallSliding = true;
             jumpCount = 0;
             wallDirection = collision.gameObject.transform.position.x > transform.position.x ? -1 : 1;
-        }
+        } 
     }
 
     private void CheckGrounded(Collision2D collision)
@@ -221,6 +248,7 @@ public class playerMovement : MonoBehaviour
             IsGrounded = true;
             jumpCount = 0;
             moveUp = false;
+            isWallSliding = false;
             BoolAnimation("DoubleJump", false);
             
         }       
@@ -239,7 +267,6 @@ public class playerMovement : MonoBehaviour
             animActive = true;
             anim.SetBool(name, value);
             resetAnimationActive();
-            Debug.Log("BoolAnimation: " + name + " " + value);
         }
 
     }
@@ -255,7 +282,6 @@ public class playerMovement : MonoBehaviour
             animActive = true;
             anim.SetTrigger(name);
             resetAnimationActive();
-            Debug.Log("TriggerAnimation: " + name);
         }
     }
     
