@@ -1394,6 +1394,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 512653475303539231, guid: bd3cca2700efa4e41b3b5dcad1019ebd, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.64779866
+      objectReference: {fileID: 0}
+    - target: {fileID: 512653475303539231, guid: bd3cca2700efa4e41b3b5dcad1019ebd, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 512653475303539231, guid: bd3cca2700efa4e41b3b5dcad1019ebd, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.83846444
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd3cca2700efa4e41b3b5dcad1019ebd, type: 3}
 --- !u!1001 &243753839
@@ -2344,6 +2356,10 @@ PrefabInstance:
       propertyPath: Speed_Image
       value: 
       objectReference: {fileID: 2054967491}
+    - target: {fileID: 4609110376362512127, guid: cab3317c97c45aa478aa03fc1f4c3c15, type: 3}
+      propertyPath: Shield_Image
+      value: 
+      objectReference: {fileID: 1857400277}
     - target: {fileID: 4609110376362512127, guid: cab3317c97c45aa478aa03fc1f4c3c15, type: 3}
       propertyPath: healthSlider
       value: 
@@ -4040,7 +4056,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8872985251259306136, guid: d945cd7bedd3b9f41a3f6f8b7a55c768, type: 3}
       propertyPath: startingTime
-      value: 1200000
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 8872985251680670181, guid: d945cd7bedd3b9f41a3f6f8b7a55c768, type: 3}
       propertyPath: m_AnchorMax.x
@@ -4055,6 +4071,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8872985251698525135, guid: d945cd7bedd3b9f41a3f6f8b7a55c768, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8872985251836835959, guid: d945cd7bedd3b9f41a3f6f8b7a55c768, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -4089,6 +4109,10 @@ PrefabInstance:
     - target: {fileID: 8872985252015928163, guid: d945cd7bedd3b9f41a3f6f8b7a55c768, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: OnButtonLeftDown
+      objectReference: {fileID: 0}
+    - target: {fileID: 8872985252054772765, guid: d945cd7bedd3b9f41a3f6f8b7a55c768, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8872985252112112850, guid: d945cd7bedd3b9f41a3f6f8b7a55c768, type: 3}
       propertyPath: m_AnchorMax.x
@@ -5546,6 +5570,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1010057456}
+  - component: {fileID: 1010057457}
   m_Layer: 0
   m_Name: Items
   m_TagString: Untagged
@@ -5570,6 +5595,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1010057457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1010057455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6630114af2a9c04192e0a7f6f9a4327, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthSlider: {fileID: 924083097}
+  anim: {fileID: 0}
+  GamObject: {fileID: 0}
+  Speed_Image: {fileID: 2054967491}
+  Shield_Image: {fileID: 1857400277}
 --- !u!4 &1013367441 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7260025557115344718, guid: 8f6980eb61d355d47ad8bf4bb43ab256, type: 3}
@@ -74930,6 +74972,11 @@ MonoBehaviour:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6935003125032988777, guid: 0844606e5e646314d8fe0cbe4651bbf8, type: 3}
   m_PrefabInstance: {fileID: 230629743}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1857400277 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8872985251742377646, guid: d945cd7bedd3b9f41a3f6f8b7a55c768, type: 3}
+  m_PrefabInstance: {fileID: 709018344}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1869891015 stripped
 Transform:

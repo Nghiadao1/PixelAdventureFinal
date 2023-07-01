@@ -24,22 +24,25 @@ public class playerMovement : MonoBehaviour
     public Animator anim;
     public LayerMask jumpableGround;
     public LayerMask whatIsWall;
-    private bool IsGrounded;
+    public static bool IsGrounded;
     private int jumpCount;
     private int jumpCountMax = 2;
     private float wallSlideSpeed = 1f;
     private int wallDirection;
     private float wallJumpForce = 10f;
     private float lastWallJumpTime;
-    
-    private bool isWallSliding = false;
+    public static bool isFacingRight;
+    public static bool isWallSliding = false;
     private float distanceToWall = 0.5f;
-    private bool isMoving = false;
-    private bool moveUp = false;
-    
+    public static bool isMoving = false;
+    public static bool moveUp = false;
+    public static bool isJumping = false;
+    public static bool isSlidingLeft = false;
     [SerializeField] private AudioSource audioSource;
     private bool animActive = false;
     private AnimatorClipInfo[] clipInfo;
+    public static Transform player;
+    public ParticleController particleController;
 
     public bool IsWallSliding
     {
@@ -52,18 +55,6 @@ public class playerMovement : MonoBehaviour
         }
     }
 
-    public enum AnimationState{
-        idle,
-        run,
-        jump,
-        doubleJump,
-        jumpWall,
-        fall,
-        hurt,
-        death
-    }
-    
-    // Start is called before the first frame update
     void Start()
     {
          rb2d = GetComponent<Rigidbody2D> ();
@@ -72,7 +63,7 @@ public class playerMovement : MonoBehaviour
          anim = GetComponent<Animator>();
          isMoving = false;
          moveUp = false; 
-         
+         player = GetComponent<Transform>();
      }
     void Update()
     {
@@ -87,6 +78,8 @@ public class playerMovement : MonoBehaviour
     public void SetDownMoveUp(){
         if(jumpCount < 2){
             moveUp = true;
+        } else {
+            moveUp = false;
         }
        
         
@@ -105,12 +98,16 @@ public class playerMovement : MonoBehaviour
                 TriggerAnimation("Jump");
                 jumpCount++;
                 moveUp = false;
+                isJumping = true;
+                particleController.PlayDustJumpEffect();
             } else{
                 audioSource.Play();
                 rb2d.velocity = new Vector2(rb2d.velocity.x, jump);
                 TriggerAnimation("Jump");
                 jumpCount++;
                 moveUp = false;
+                isJumping = true;
+                particleController.PlayDustJumpEffect();
             }
 
             
@@ -124,10 +121,14 @@ public class playerMovement : MonoBehaviour
     public void OnButtonLeftDown(){
         isMoving = true;
         moving = -Speed;
+        isFacingRight = false;
+      
     }
     public void OnButtonRightDown(){
         isMoving= true;
         moving = Speed;
+        isFacingRight = true;
+      
     }
     public void OnButtonLeftUp(){
         isMoving = false;
@@ -141,26 +142,19 @@ public class playerMovement : MonoBehaviour
             if(IsGrounded && !IsWallSliding){
                 TriggerAnimation("Run");
             }
-
-        } else {
-            // nhân vật dừng lại và set animation idle
-            rb2d.velocity = new Vector2(0, rb2d.velocity.y);
-        }
-        // if (!isMoving && !IsGrounded && !isWallSliding && !moveUp && rb2d.velocity.y < 0f)
-        // {
-        //     TriggerAnimation("jumpWall");
-        //     isWallSliding = true;
-        // }
+        } 
     }
     private void Flip()
     {
         if (moving > 0)
         {
             sprite.flipX = false;
+            isSlidingLeft = false;
         }
         else if (moving < 0)
         {
             sprite.flipX = true;
+            isSlidingLeft = true;
         }
     }
     void WallSlip(){
@@ -231,7 +225,7 @@ public class playerMovement : MonoBehaviour
     }
     private void CheckWallSliding(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Wall" && !IsWallSliding)
+        if (collision.gameObject.tag == "Wall")
         {
             
             IsWallSliding = true;
@@ -249,6 +243,7 @@ public class playerMovement : MonoBehaviour
             jumpCount = 0;
             moveUp = false;
             isWallSliding = false;
+            isJumping = false;
             BoolAnimation("DoubleJump", false);
             
         }       
