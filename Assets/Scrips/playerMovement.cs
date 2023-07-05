@@ -38,6 +38,7 @@ public class playerMovement : MonoBehaviour
     public static bool moveUp = false;
     public static bool isJumping = false;
     public static bool isSlidingLeft = false;
+    public static bool isFalling = false;
     [SerializeField] private AudioSource audioSource;
     private bool animActive = false;
     private AnimatorClipInfo[] clipInfo;
@@ -244,6 +245,7 @@ public class playerMovement : MonoBehaviour
             moveUp = false;
             isWallSliding = false;
             isJumping = false;
+            isFalling = false;
             BoolAnimation("DoubleJump", false);
             
         }       
@@ -295,6 +297,7 @@ public class playerMovement : MonoBehaviour
         
         if(rb2d.velocity.y< -1f){
             TriggerAnimation("Fall");
+            isFalling = true;
         }
         //double jump
         if(jumpCount==2){

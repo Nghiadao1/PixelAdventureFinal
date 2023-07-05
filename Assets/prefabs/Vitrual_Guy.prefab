@@ -152,6 +152,7 @@ Transform:
   - {fileID: 6986854558478774114}
   - {fileID: 4527689343337687146}
   - {fileID: 7997885267258587919}
+  - {fileID: 1355072367505747340}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -960,13 +961,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2752144121250280753}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.874, y: -0.77, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.004001, y: 13.139999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6986854558478774114}
-  m_RootOrder: 5
+  m_Father: {fileID: 7071703720317761885}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3215404934111294879
 SpriteRenderer:
@@ -1156,7 +1157,6 @@ GameObject:
   - component: {fileID: 6986854558478774114}
   - component: {fileID: 983730403772566023}
   - component: {fileID: 6344060773981465558}
-  - component: {fileID: 7834406213225594705}
   m_Layer: 10
   m_Name: Dust effect
   m_TagString: Untagged
@@ -1181,8 +1181,7 @@ Transform:
   - {fileID: 9122132806088301820}
   - {fileID: 34304117006060293}
   - {fileID: 8812581818876317061}
-  - {fileID: 5484513960388953863}
-  - {fileID: 5116477159642418535}
+  - {fileID: 7071703720317761885}
   m_Father: {fileID: 698336010630951140}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1200,10 +1199,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dustEffectRight: {fileID: 4999263953706011365}
   dustEffectLeft: {fileID: 3168960415110197563}
-  dustEffectSlidingLeft: {fileID: 0}
-  dustEffectSlidingRight: {fileID: 0}
-  dustEffectJump: {fileID: 0}
-  GroundCheck: {fileID: 0}
+  dustEffectSlidingLeft: {fileID: 9079516930228135441}
+  dustEffectSlidingRight: {fileID: 107524967969764535}
+  dustEffectJump: {fileID: 2550127110776822568}
+  GroundCheck: {fileID: 698336011042343101}
+  FallCheck: {fileID: 6471829921368951577}
+  dustEffectFall: {fileID: 5187832011486792211}
 --- !u!61 &6344060773981465558
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1230,21 +1231,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.2590637, y: 0.11970043}
   m_EdgeRadius: 0
---- !u!114 &7834406213225594705
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3952364892127394663}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8470ca3538246c46a4be4b87ea06117, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dustEffectFallLeft: {fileID: 0}
-  dustEffectFallRight: {fileID: 0}
-  isFalling: 0
 --- !u!1 &4999263953706011365
 GameObject:
   m_ObjectHideFlags: 0
@@ -1350,6 +1336,70 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!1 &5187832011486792211
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7071703720317761885}
+  m_Layer: 10
+  m_Name: Fall
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7071703720317761885
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5187832011486792211}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.8700001, y: -13.91, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5484513960388953863}
+  - {fileID: 5116477159642418535}
+  m_Father: {fileID: 6986854558478774114}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6471829921368951577
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1355072367505747340}
+  m_Layer: 0
+  m_Name: FallCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1355072367505747340
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6471829921368951577}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.0099983215, y: -1.0438867, z: 0.12326662}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 698336010630951140}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7690206236029388621
 GameObject:
   m_ObjectHideFlags: 0
@@ -1375,13 +1425,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7690206236029388621}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.41, y: -0.77, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.45999968, y: 13.139999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6986854558478774114}
-  m_RootOrder: 6
+  m_Father: {fileID: 7071703720317761885}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8338187152030166237
 SpriteRenderer:

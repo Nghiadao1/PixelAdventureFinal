@@ -15102,11 +15102,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7260025557115344718, guid: 8f6980eb61d355d47ad8bf4bb43ab256, type: 3}
   m_PrefabInstance: {fileID: 1538665799}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &380686294 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1091741537584115618, guid: d5672e849db5cc2409757f6b376ec286, type: 3}
-  m_PrefabInstance: {fileID: 1033756741120396371}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &382451493
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17867,8 +17862,8 @@ MonoBehaviour:
   dustEffectSlidingRight: {fileID: 0}
   dustEffectJump: {fileID: 0}
   GroundCheck: {fileID: 0}
-  dustEffectFallLeft: {fileID: 0}
-  dustEffectFallRight: {fileID: 0}
+  FallCheck: {fileID: 0}
+  dustEffectFall: {fileID: 0}
 --- !u!4 &891220707 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7260025557115344718, guid: 8f6980eb61d355d47ad8bf4bb43ab256, type: 3}
@@ -19067,11 +19062,6 @@ PrefabInstance:
 --- !u!1 &1180846264 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7269299719630314584, guid: d5672e849db5cc2409757f6b376ec286, type: 3}
-  m_PrefabInstance: {fileID: 1033756741120396371}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1189686963 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 569802803898553256, guid: d5672e849db5cc2409757f6b376ec286, type: 3}
   m_PrefabInstance: {fileID: 1033756741120396371}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1198240091
@@ -79668,11 +79658,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3457980621012798517, guid: 937a9dbc5c79fd841803df43ec320d51, type: 3}
   m_PrefabInstance: {fileID: 1262395415}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1268034091 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3259334407573323837, guid: d5672e849db5cc2409757f6b376ec286, type: 3}
-  m_PrefabInstance: {fileID: 1033756741120396371}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1275699846
 GameObject:
   m_ObjectHideFlags: 0
@@ -82499,11 +82484,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f6980eb61d355d47ad8bf4bb43ab256, type: 3}
---- !u!1 &1745872929 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8095300377786416388, guid: d5672e849db5cc2409757f6b376ec286, type: 3}
-  m_PrefabInstance: {fileID: 1033756741120396371}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1763722594
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -83504,11 +83484,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6935003125032988777, guid: 0844606e5e646314d8fe0cbe4651bbf8, type: 3}
   m_PrefabInstance: {fileID: 1773021595}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1995561191 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2711955266718738990, guid: d5672e849db5cc2409757f6b376ec286, type: 3}
-  m_PrefabInstance: {fileID: 1033756741120396371}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2001062810
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -84357,22 +84332,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 287752983858532626, guid: d5672e849db5cc2409757f6b376ec286, type: 3}
-      propertyPath: GroundCheck
-      value: 
-      objectReference: {fileID: 1189686963}
-    - target: {fileID: 287752983858532626, guid: d5672e849db5cc2409757f6b376ec286, type: 3}
-      propertyPath: dustEffectJump
-      value: 
-      objectReference: {fileID: 1268034091}
-    - target: {fileID: 287752983858532626, guid: d5672e849db5cc2409757f6b376ec286, type: 3}
-      propertyPath: dustEffectLeft
-      value: 
-      objectReference: {fileID: 1995561191}
-    - target: {fileID: 287752983858532626, guid: d5672e849db5cc2409757f6b376ec286, type: 3}
-      propertyPath: dustEffectRight
-      value: 
-      objectReference: {fileID: 595974489}
-    - target: {fileID: 287752983858532626, guid: d5672e849db5cc2409757f6b376ec286, type: 3}
       propertyPath: dustPositionLeft
       value: 
       objectReference: {fileID: 1596539721}
@@ -84380,14 +84339,6 @@ PrefabInstance:
       propertyPath: dustPositionRight
       value: 
       objectReference: {fileID: 1475609773}
-    - target: {fileID: 287752983858532626, guid: d5672e849db5cc2409757f6b376ec286, type: 3}
-      propertyPath: dustEffectSlidingLeft
-      value: 
-      objectReference: {fileID: 1745872929}
-    - target: {fileID: 287752983858532626, guid: d5672e849db5cc2409757f6b376ec286, type: 3}
-      propertyPath: dustEffectSlidingRight
-      value: 
-      objectReference: {fileID: 380686294}
     - target: {fileID: 569802803898553303, guid: d5672e849db5cc2409757f6b376ec286, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.58
@@ -84488,6 +84439,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 1847978361, guid: 8ee0df47c387a5c418be3beac6b903ca, type: 3}
+    - target: {fileID: 1092874043285025833, guid: d5672e849db5cc2409757f6b376ec286, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1408873585302318793, guid: d5672e849db5cc2409757f6b376ec286, type: 3}
       propertyPath: m_Name
       value: RightPositon
@@ -84548,9 +84503,25 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4775025226193329170, guid: d5672e849db5cc2409757f6b376ec286, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.243997
+      objectReference: {fileID: 0}
+    - target: {fileID: 4775025226193329170, guid: d5672e849db5cc2409757f6b376ec286, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.19
+      objectReference: {fileID: 0}
     - target: {fileID: 4988189460795733966, guid: d5672e849db5cc2409757f6b376ec286, type: 3}
       propertyPath: m_Color.a
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5285471800037021298, guid: d5672e849db5cc2409757f6b376ec286, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 5285471800037021298, guid: d5672e849db5cc2409757f6b376ec286, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.19
       objectReference: {fileID: 0}
     - target: {fileID: 5420170470116823536, guid: d5672e849db5cc2409757f6b376ec286, type: 3}
       propertyPath: m_Name
@@ -84593,6 +84564,10 @@ PrefabInstance:
       value: LeftPosition
       objectReference: {fileID: 0}
     - target: {fileID: 7125190173004096580, guid: d5672e849db5cc2409757f6b376ec286, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7125190173004096580, guid: d5672e849db5cc2409757f6b376ec286, type: 3}
       propertyPath: dustEffectFallLeft
       value: 
       objectReference: {fileID: 688328906}
@@ -84600,6 +84575,18 @@ PrefabInstance:
       propertyPath: dustEffectFallRight
       value: 
       objectReference: {fileID: 1180846264}
+    - target: {fileID: 7816869441969775176, guid: d5672e849db5cc2409757f6b376ec286, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 7816869441969775176, guid: d5672e849db5cc2409757f6b376ec286, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -17.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 7816869441969775176, guid: d5672e849db5cc2409757f6b376ec286, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.12326662
+      objectReference: {fileID: 0}
     - target: {fileID: 7975575274049631351, guid: d5672e849db5cc2409757f6b376ec286, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.662

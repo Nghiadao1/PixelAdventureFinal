@@ -1,4 +1,4 @@
-
+using static System.Numerics.Vector3;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,8 +14,8 @@ public class ParticleController : MonoBehaviour
     public GameObject dustEffectSlidingRight;
     public GameObject dustEffectJump;
     public GameObject GroundCheck;
-    public GameObject dustEffectFallLeft;
-    public GameObject dustEffectFallRight;
+    public GameObject FallCheck;
+    public GameObject dustEffectFall;
     void Start()
     {
         dustEffectLeft.SetActive(false);
@@ -37,7 +37,22 @@ public class ParticleController : MonoBehaviour
         if(other.gameObject.CompareTag("Wall")){
             CheckSlidingLeft();
         }
+        if(other.gameObject.CompareTag("Ground") )
+        {
+            PlayDustFall();
+        }
     }
+
+    private void CreateSmokeFall(Vector3 position)
+    {
+        playerMovement.isFalling = true;
+        GameObject dustFallEffect = Instantiate(dustEffectFall, position, Quaternion.identity);
+        Destroy(dustFallEffect, 0.3f);
+    }
+    void PlayDustFall(){
+        CreateSmokeFall(FallCheck.transform.position);
+    }
+
     void OnTriggerExit2D(Collider2D other){
         if(other.gameObject.CompareTag("Wall")){
             dustEffectSlidingLeft.SetActive(false);
