@@ -44,6 +44,7 @@ public class TimeDown : MonoBehaviour
      void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Score.cherries = 0;
     }
 
 }

@@ -5652,6 +5652,10 @@ PrefabInstance:
       propertyPath: audioDeathSource
       value: 
       objectReference: {fileID: 1439467811}
+    - target: {fileID: 569802804360293322, guid: d5672e849db5cc2409757f6b376ec286, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 569802804360293367, guid: d5672e849db5cc2409757f6b376ec286, type: 3}
       propertyPath: scoreGem
       value: 

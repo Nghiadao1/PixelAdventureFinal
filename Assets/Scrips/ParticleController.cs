@@ -8,8 +8,8 @@ using UnityEngine.UI;
 public class ParticleController : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject dustEffectRight; 
-    public GameObject dustEffectLeft;
+    public GameObject dustEffectRunRight; 
+    public GameObject dustEffectRunLeft;
     public GameObject dustEffectSlidingLeft;
     public GameObject dustEffectSlidingRight;
     public GameObject dustEffectJump;
@@ -18,28 +18,30 @@ public class ParticleController : MonoBehaviour
     public GameObject dustEffectFall;
     void Start()
     {
-        dustEffectLeft.SetActive(false);
-        dustEffectRight.SetActive(false);
+        dustEffectRunLeft.SetActive(false);
+        dustEffectRunRight.SetActive(false);
         dustEffectSlidingLeft.SetActive(false);
         dustEffectSlidingRight.SetActive(false);
     }
     void Update()
     {
-        PlayDustRun();
         EnableDustRun();
 
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.CompareTag("Ground")){
-            PlayDustRun();
-        }
         if(other.gameObject.CompareTag("Wall")){
             CheckSlidingLeft();
         }
         if(other.gameObject.CompareTag("Ground") )
         {
             PlayDustFall();
+        }
+    }
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if(other.gameObject.CompareTag("Ground")){
+            PlayDustRun();
         }
     }
 
@@ -58,13 +60,17 @@ public class ParticleController : MonoBehaviour
             dustEffectSlidingLeft.SetActive(false);
             dustEffectSlidingRight.SetActive(false);
         }
+        if(other.gameObject.CompareTag("Ground")){
+            dustEffectRunLeft.SetActive(false);
+            dustEffectRunRight.SetActive(false);
+        }
     }
     //Run
     void EnableDustRun()
     {
         if(playerMovement.isMoving == false){
-            dustEffectLeft.SetActive(false);
-            dustEffectRight.SetActive(false);
+            dustEffectRunLeft.SetActive(false);
+            dustEffectRunRight.SetActive(false);
         }
     }
     public void PlayDustRun(){
@@ -72,11 +78,11 @@ public class ParticleController : MonoBehaviour
         && playerMovement.isWallSliding == false )
         {
             if(playerMovement.isFacingRight == false){
-                dustEffectLeft.SetActive(true);
-                dustEffectRight.SetActive(false);
+                dustEffectRunLeft.SetActive(true);
+                dustEffectRunRight.SetActive(false);
             } else{
-                dustEffectLeft.SetActive(false);
-                dustEffectRight.SetActive(true);
+                dustEffectRunLeft.SetActive(false);
+                dustEffectRunRight.SetActive(true);
             }
 
         }
