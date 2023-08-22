@@ -73,6 +73,14 @@ public class playerMovement : MonoBehaviour
         // JumpWall();
         WallSlip();
         UpdateAnimationUpdate();
+        if (isMoving)
+        {
+            rb2d.velocity = new Vector2(moving, rb2d.velocity.y);
+            if (IsGrounded && !IsWallSliding)
+            {
+                TriggerAnimation("Run");
+            }
+        }
     }
    
    
@@ -82,9 +90,6 @@ public class playerMovement : MonoBehaviour
         } else {
             moveUp = false;
         }
-       
-        
-
     }
 
     private void MoveJump()
@@ -122,14 +127,12 @@ public class playerMovement : MonoBehaviour
     public void OnButtonLeftDown(){
         isMoving = true;
         moving = -Speed;
-        isFacingRight = false;
-      
+        isFacingRight = false;  
     }
     public void OnButtonRightDown(){
         isMoving= true;
         moving = Speed;
         isFacingRight = true;
-      
     }
     public void OnButtonLeftUp(){
         isMoving = false;
@@ -138,12 +141,7 @@ public class playerMovement : MonoBehaviour
         isMoving = false;
     }
     private void FixedUpdate() {
-        if(isMoving){
-            rb2d.velocity = new Vector2(moving, rb2d.velocity.y);
-            if(IsGrounded && !IsWallSliding){
-                TriggerAnimation("Run");
-            }
-        } 
+        
     }
     private void Flip()
     {

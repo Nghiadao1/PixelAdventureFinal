@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI; 
 
 
+
 public class ParticleController : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -109,4 +110,5 @@ public class ParticleController : MonoBehaviour
             dustEffectSlidingRight.SetActive(true);
         }
     }
+   
 }

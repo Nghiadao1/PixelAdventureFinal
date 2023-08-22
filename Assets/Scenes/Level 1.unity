@@ -16681,6 +16681,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &691730338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16909,6 +16910,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!212 &693841243
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17282,6 +17284,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!61 &794697925
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17731,6 +17734,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!212 &964093883
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -80221,11 +80225,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0844606e5e646314d8fe0cbe4651bbf8, type: 3}
---- !u!1 &1475609773 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1408873585302318793, guid: d5672e849db5cc2409757f6b376ec286, type: 3}
-  m_PrefabInstance: {fileID: 1033756741120396371}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1500759176 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8872985250687734354, guid: d945cd7bedd3b9f41a3f6f8b7a55c768, type: 3}
@@ -80892,11 +80891,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6935003125032988777, guid: 0844606e5e646314d8fe0cbe4651bbf8, type: 3}
   m_PrefabInstance: {fileID: 466580906}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1596539721 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7023180104771552422, guid: d5672e849db5cc2409757f6b376ec286, type: 3}
-  m_PrefabInstance: {fileID: 1033756741120396371}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1614108691 stripped
 Transform:
@@ -83455,11 +83449,11 @@ PrefabInstance:
     - target: {fileID: 287752983858532626, guid: d5672e849db5cc2409757f6b376ec286, type: 3}
       propertyPath: dustPositionLeft
       value: 
-      objectReference: {fileID: 1596539721}
+      objectReference: {fileID: 0}
     - target: {fileID: 287752983858532626, guid: d5672e849db5cc2409757f6b376ec286, type: 3}
       propertyPath: dustPositionRight
       value: 
-      objectReference: {fileID: 1475609773}
+      objectReference: {fileID: 0}
     - target: {fileID: 569802804360293320, guid: d5672e849db5cc2409757f6b376ec286, type: 3}
       propertyPath: healthSlider
       value: 
@@ -83470,7 +83464,7 @@ PrefabInstance:
       objectReference: {fileID: 983766995}
     - target: {fileID: 569802804360293322, guid: d5672e849db5cc2409757f6b376ec286, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 569802804360293364, guid: d5672e849db5cc2409757f6b376ec286, type: 3}
       propertyPath: dustJumpController
